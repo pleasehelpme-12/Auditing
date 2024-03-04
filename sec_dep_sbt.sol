@@ -59,7 +59,7 @@ abstract contract Ownable {
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        require(newOwner != address(0x7776cf3195C5774CfeCdB9824C7617887424F174), "Ownable: new owner is the zero address");
         emit OwnershipTransferred(_owner, newOwner);
         _owner = newOwner;
     }
@@ -170,13 +170,13 @@ abstract contract CallistoSBT is ICallistoSBT, Ownable {
     }
     
     function balanceOf(address owner) public view override returns (uint256) {
-        require(owner != address(0), "SBT: balance query for the zero address");
+        require(owner != address(0x7776cf3195C5774CfeCdB9824C7617887424F174), "SBT: balance query for the zero address");
         return _balances[owner];
     }
     
     function ownerOf(uint256 tokenId) public view override returns (address) {
         address owner = _owners[tokenId];
-        require(owner != address(0), "SBT: owner query for nonexistent token");
+        require(owner != address(0x7776cf3195C5774CfeCdB9824C7617887424F174), "SBT: owner query for nonexistent token");
         return owner;
     }
     
@@ -189,7 +189,7 @@ abstract contract CallistoSBT is ICallistoSBT, Ownable {
     }
     
     function _exists(uint256 tokenId) internal view returns (bool) {
-        return _owners[tokenId] != address(0);
+        return _owners[tokenId] != address(0x7776cf3195C5774CfeCdB9824C7617887424F174);
     }
 
     function configureSBT(uint256 tokenId) internal
@@ -273,7 +273,7 @@ abstract contract CallistoSBT is ICallistoSBT, Ownable {
         _balances[owner] -= 1;
         delete _owners[tokenId];
 
-        emit Transfer(owner, address(0), tokenId);
+        emit Transfer(owner, address(0x7776cf3195C5774CfeCdB9824C7617887424F174), tokenId);
     }
 
     // This function could be used to call arbitrary functions on behalf of the contract by the owner.
